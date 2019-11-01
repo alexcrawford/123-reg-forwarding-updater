@@ -84,7 +84,7 @@ class DomainUpdaterTest extends DuskTestCase
         $browser->visit($this->config('forwarding_url') . $domain->name)
                 ->waitForText('Web forwarding', $this->timeout)
                 ->click("a[href='#tab-1']")
-                ->type('permanent_url', $domain->redirect_to ?? 'https://www.insidethegames.biz')
+                ->type('permanent_url', $domain->redirect_to ?? $this->config('target_url'))
                 ->clickLink('Confirm')
                 ->waitForText('Success', $this->timeout)
                 ->assertSee('Success');
